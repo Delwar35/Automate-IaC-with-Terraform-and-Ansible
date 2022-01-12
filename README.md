@@ -345,6 +345,25 @@ pipeline {
 }
 ```
 
+## Create webhook
+
+- Open gitbash and cd into .ssh file
+- `ssh-keygen -t rsa -b 4096 -C "emailaddress"` e.g ssh-keygen -t rsa -b 4096 -C "bob@hotmail.com"
+> this will create a public and private key
+- enter a name for the keys
+- go to github repo
+- click on settings 
+- click deploy key
+- add key <file> and copy the public key into github
+
+![image](https://user-images.githubusercontent.com/94615905/145449161-09c6b32a-320b-4b7a-9ad4-82ecafdfa0cf.png)
+  
+#### Adding webjook
+  
+![image](https://user-images.githubusercontent.com/94615905/145450801-5ba06728-3890-450f-8924-9ee214d20fc3.png)
+
+ url (e.g `http://35.178.35.127:8080/` ) + `github-webhook/`
+
 
  
 
