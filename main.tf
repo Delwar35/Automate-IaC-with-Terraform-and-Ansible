@@ -68,6 +68,7 @@ resource "aws_route_table" "private_rt_terraform" {
     vpc_id = aws_vpc.vpc_terraform.id
          route {
             cidr_block = "0.0.0.0/0"
+            gateway_id = aws_internet_gateway.IG.id
         }
     tags = {
       "Name" = "eng99_delwar_private_rt_terraform"
@@ -195,7 +196,7 @@ resource "aws_instance" "db_instance" {
   # choose t2
   instance_type = "t2.micro"
   #enable public IP
-  associate_public_ip_address = false
+  associate_public_ip_address = true
   # associating subnet
   subnet_id = aws_subnet.private_subnet.id
   # associating security group
