@@ -307,3 +307,47 @@ resource "aws_instance" "db_instance" {
 ```
 
 ```
+
+## Running Terraform in jenkins 
+
+- Step 1: install Terraform plugin  (dashboard > manage jenkins > manage plugin > availble)
+- Step 2: add AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY (Dashboard > configure system > global properties)
+- Step 3: create a new jenkins job
+ - > pick pipeline for the job and not freespace
+ - Step 4: Configure job
+  ![image](https://user-images.githubusercontent.com/94615905/149190501-56054086-13f7-4940-b8e2-ead0f3e02789.png)
+  ![image](https://user-images.githubusercontent.com/94615905/149190688-86e84faf-ab8d-42df-b0bf-10e517d00fc1.png)
+  ![image](https://user-images.githubusercontent.com/94615905/149190779-7549b0fa-2acc-49e7-a763-40528840dc28.png)
+
+### Code in script
+
+```
+pipeline {
+    agent any
+    stages {
+        stage ('Checkout'){
+            steps {
+                sh 'rm -rf Automate-IaC-with-Terraform-and-Ansible'
+                sh "git clone https://github.com/Delwar35/Automate-IaC-with-Terraform-and-Ansible.git"
+            }
+        }
+        stage('Apply Terraform'){
+            steps{
+                dir("Automate-IaC-with-Terraform-and-Ansible"){
+                    sh 'terraform init'
+                    sh 'terraform apply --auto-approve'
+                }
+            }
+            
+        }
+        
+    }
+}
+```
+
+
+ 
+
+
+
+
