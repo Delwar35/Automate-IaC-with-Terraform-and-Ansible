@@ -67,3 +67,19 @@ You should see the Unlock Jenkins screen.
   - Click Start using Jenkins to go to the main Jenkins dashboard and start to use Jenkins
   
   > Jenkis is now all setup and ready to use
+
+
+## Installing Terrform plugin
+
+![image](https://user-images.githubusercontent.com/94615905/149137652-9299337a-132a-4415-8f61-e99eb6edb570.png)
+
+## Creating Iac using terraform
+### Creating VPC using Terraform
+### Creating public subnet using Terraform
+### Creating private subnet using Terraform
+### Creating app ec2 instance with security groups using Terraform
+### Creating db ec2 instance with security groups using Terraform
+### Creating ansible ec2 instance with security groups using Terraform
+
+
+
