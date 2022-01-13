@@ -364,6 +364,10 @@ pipeline {
 
  url (e.g `http://35.178.35.127:8080/` ) + `github-webhook/`
 
+## Running playbooks on Jenkins
+ 
+### Step 1: Set up ansible
+ - Install the ansible pulgin on jenkins 
 
  
 
