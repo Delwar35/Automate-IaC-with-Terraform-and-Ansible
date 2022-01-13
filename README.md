@@ -368,7 +368,8 @@ pipeline {
 ## Running playbooks on Jenkins
  
 ### Step 1: Set up ansible
- - Install the ansible pulgin on jenkins 
+ - Install the ansible pulgin on jenkins
+ 
  ![image](https://user-images.githubusercontent.com/94615905/149317129-e4dfa537-381a-493b-9df0-e02d1550d816.png)
  
 - ssh into jenkins ec2 instance and dowmload ansible in the ec2 instance 
@@ -382,6 +383,15 @@ pipeline {
  sudo apt-get update
  sudo apt-get install ansible
  ```
+ - Go to global Tool Configureation and add ansible and the path for it in the jenkins ec2
+ 
+ ![image](https://user-images.githubusercontent.com/94615905/149323304-bd6103b3-4a45-4e81-a6f8-a42f3bfbf9e1.png)
+
+ > This will allow you to use ansible in jenkins jobs
+ > The path can be found by using the command `which ansible`
+ > ![image](https://user-images.githubusercontent.com/94615905/149323663-373cb10d-aa4f-4867-8cb2-be92d7ab7822.png)
+
+ 
 
  
 
