@@ -463,7 +463,10 @@ pipeline {
 ```
 - Inside Pipline Syntax
 
-![image](https://user-images.githubusercontent.com/94615905/149361718-43fe66ec-7c79-49eb-8871-1fc100a5d094.png)
+![image](https://user-images.githubusercontent.com/94615905/149362124-eddae86f-9069-41e6-8ce4-f59fe2f31a63.png)
+![image](https://user-images.githubusercontent.com/94615905/149362279-77f1baba-ea63-4b10-9126-1fa1b3700af4.png)
+
+
 
 > ubuntu is the eng99.pem file with user set to ubuntu
 
