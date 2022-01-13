@@ -1,2 +1,5 @@
 [db]
 ec2-instance ansible_host=54.72.204.195 ansible_user=ubuntu
+
+[app]
+ec2-instance ansible_host=34.247.167.192 ansible_user=ubuntu
