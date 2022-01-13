@@ -368,6 +368,19 @@ pipeline {
  
 ### Step 1: Set up ansible
  - Install the ansible pulgin on jenkins 
+ ![image](https://user-images.githubusercontent.com/94615905/149317129-e4dfa537-381a-493b-9df0-e02d1550d816.png)
+ 
+- ssh into jenkins ec2 instance and dowmload ansible in the ec2 instance 
+  - install Jenkins command
+ ```
+ sudo apt-get update -y
+ sudo apt-get udgrade -y
+ sudo apt-get install software-properties-common 
+ 
+ sudo apt-add-repository ppa:ansible/ansible
+ sudo apt-get update
+ sudo apt-get install ansible
+ ```
 
  
 
