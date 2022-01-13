@@ -390,7 +390,86 @@ pipeline {
  > This will allow you to use ansible in jenkins jobs
  > The path can be found by using the command `which ansible`
  > ![image](https://user-images.githubusercontent.com/94615905/149323663-373cb10d-aa4f-4867-8cb2-be92d7ab7822.png)
+ 
+ 
+### Step 2 create playbook to install mongodb and create a host file
+ - create a .yml file (`sudo nano install_mongodb.yml`) and add the code below in 
+ ```
+ # Installing mongo in db VM
+---
+# host name
+- hosts: db
+  gather_facts: yes
 
+# gather facts for installation
+
+# we need admin access
+  become: true
+
+# The actual task is to install mongodb in db VM
+
+  tasks:
+  - name:
+    shell: |
+      sudo apt-get update -y
+      sudo apt-get upgrade -y
+      
+  - name: Installing mongodb in db VM
+    apt: pkg=mongodb state=present
+
+  - name: restarting db and chnaging conf file
+    shell: |
+      rm -rf /etc/mongod.conf
+      cp ./mongod.conf /etc/mongod.conf
+      sudo systemctl restart mongodb
+      sudo systemctl enable mongodb
+    become_user: root
+ 
+ ```
+- create a host file with the extemsion .inv `sudo nano hosts.inv`
+ ```
+ [db]
+ec2-instance ansible_host=54.72.204.195 ansible_user=ubuntu
+
+[app]
+ec2-instance ansible_host=34.247.167.192 ansible_user=ubuntu
+```
+### Step 3: create jenkins job to run db playbook
+
+![image](https://user-images.githubusercontent.com/94615905/149360657-57ffd914-a6fe-407f-be8f-51e82259c5ad.png)
+![image](https://user-images.githubusercontent.com/94615905/149360782-2bee0362-3878-4808-8358-a90865578520.png)
+
+```
+pipeline {
+    agent any
+    stages {
+        stage ('Get Filles'){
+            steps {
+                sh 'rm -rf Automate-IaC-with-Terraform-and-Ansible'
+                sh "git clone https://github.com/Delwar35/Automate-IaC-with-Terraform-and-Ansible.git"
+            }
+        }
+        stage('Execute Ansible plaaybook'){
+            steps{
+                dir("Automate-IaC-with-Terraform-and-Ansible"){
+                    ansiblePlaybook credentialsId: 'ff2dd3cc-5820-4ab0-b1c4-64b39cc42ee7', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.inv', playbook: 'install_mongodb.yml'
+                }
+            }
+            
+        }
+        
+    }
+} 
+```
+- Inside Pipline Syntax
+
+![image](https://user-images.githubusercontent.com/94615905/149361333-467bf40f-84a8-496a-afe3-9ca999e8b4e3.png)
+
+> ubuntu is the eng99.pem file with user set to ubuntu
+
+
+
+ 
  
 
  
