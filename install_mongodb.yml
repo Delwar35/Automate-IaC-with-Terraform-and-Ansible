@@ -1,0 +1,30 @@
+# Installing mongo in db VM
+---
+# host name
+- hosts: db
+  gather_facts: yes
+
+# gather facts for installation
+
+# we need admin access
+  become: true
+
+# The actual task is to install mongodb in db VM
+
+  tasks:
+  - name:
+    shell: |
+      sudo apt-get update -y
+      sudo apt-get upgrade -y
+      touch itworked.txt
+      
+  - name: Installing mongodb in db VM
+    apt: pkg=mongodb state=present
+
+  - name: restarting db and chnaging conf file
+    shell: |
+      rm -rf /etc/mongod.conf
+      cp ./mongod.conf /etc/mongod.conf
+      sudo systemctl restart mongodb
+      sudo systemctl enable mongodb
+    become_user: root
