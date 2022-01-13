@@ -315,6 +315,7 @@ resource "aws_instance" "db_instance" {
 - Step 3: create a new jenkins job
  - > pick pipeline for the job and not freespace
  - Step 4: Configure job
+ 
   ![image](https://user-images.githubusercontent.com/94615905/149190501-56054086-13f7-4940-b8e2-ead0f3e02789.png)
   ![image](https://user-images.githubusercontent.com/94615905/149190688-86e84faf-ab8d-42df-b0bf-10e517d00fc1.png)
   ![image](https://user-images.githubusercontent.com/94615905/149190779-7549b0fa-2acc-49e7-a763-40528840dc28.png)
