@@ -463,8 +463,8 @@ pipeline {
 ```
 - Inside Pipline Syntax
 
-![image](https://user-images.githubusercontent.com/94615905/149362124-eddae86f-9069-41e6-8ce4-f59fe2f31a63.png)
-![image](https://user-images.githubusercontent.com/94615905/149362279-77f1baba-ea63-4b10-9126-1fa1b3700af4.png)
+![image](https://user-images.githubusercontent.com/94615905/149362916-22656fa2-83ab-48ff-935e-9afff2a84efa.png)
+![image](https://user-images.githubusercontent.com/94615905/149362686-7f740514-9bb4-40c0-aba8-1d2a5cf5d1f5.png)
 
 
 
