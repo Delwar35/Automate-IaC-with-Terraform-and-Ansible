@@ -547,6 +547,32 @@ pipeline {
     become_user: root
  ```
 ### Step 5: Create job to run app playbooks 
+ 
+ - Script for job
+ 
+ ```
+ pipeline {
+    agent any
+    stages {
+        stage ('Get Filles'){
+            steps {
+                sh 'rm -rf Automate-IaC-with-Terraform-and-Ansible'
+                sh "git clone https://github.com/Delwar35/Automate-IaC-with-Terraform-and-Ansible.git"
+            }
+        }
+        stage('Execute Ansible plaaybook'){
+            steps{
+                dir("Automate-IaC-with-Terraform-and-Ansible"){
+                    ansiblePlaybook credentialsId: 'ff2dd3cc-5820-4ab0-b1c4-64b39cc42ee7', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.inv', playbook: 'install_nginx.yml'
+                    ansiblePlaybook credentialsId: 'ff2dd3cc-5820-4ab0-b1c4-64b39cc42ee7', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.inv', playbook: 'install_nodejs.yml'
+                }
+            }
+            
+        }
+        
+    }
+} 
+ ```
 
  
  
