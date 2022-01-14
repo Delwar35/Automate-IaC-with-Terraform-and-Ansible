@@ -301,6 +301,8 @@ resource "aws_instance" "db_instance" {
   key_name = "eng99" # ensure that we have key in .ssh file 
 }
 ```
+> `echo "[app]\n$(terraform output app_ip) ansible_user=ubuntu" | sed 's/"//g' > hosts.inv` - gets the app ec2 ip and adds it to the hosts.inv file
+> echo "[db]\n$(terraform output db_ip) ansible_user=ubuntu" | sed 's/"//g' > hosts.inv - gets the db ec2 ip and adds it to the hosts.inv file
 
 ### Creating ansible ec2 instance with security groups using Terraform
 
