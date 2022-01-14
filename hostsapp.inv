@@ -1,0 +1,2 @@
+[app]
+ec2-instance ansible_host=3.250.53.248 ansible_user=ubuntu
