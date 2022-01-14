@@ -23,8 +23,9 @@
 
   - name: restarting db and chnaging conf file
     shell: |
-      rm -rf /etc/mongod.conf
-      cp ./mongod.conf /etc/mongod.conf
+      git clone https://github.com/Delwar35/awsFileTransfer
+      sudo rm -rf /etc/mongod.conf
+      sudo cp ./mongod.conf /etc/mongod.conf
       sudo systemctl restart mongodb
       sudo systemctl enable mongodb
     become_user: root

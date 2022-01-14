@@ -4,3 +4,7 @@ ec2-instance ansible_host=34.255.0.65 ansible_user=ubuntu
 
 # [app]
 # ec2-instance ansible_host=3.250.53.248 ansible_user=ubuntu
+
+# To get it to work with only one host file add 
+# 34.255.0.65 ansible_user=ubuntu
+# 3.250.53.248 ansible_user=ubuntu
