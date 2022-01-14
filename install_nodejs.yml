@@ -1,6 +1,6 @@
 ---
 # which host do we need to install nginx in
-- hosts: web
+- hosts: app
   gather_facts: true
 
 # what facts do we want to see while installing

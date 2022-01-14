@@ -11,12 +11,18 @@
 
 # what task do we want to perform in this yml file
   tasks:
+  - name: update and upgrade
+    shell: |
+      sudo apt-get update -y
+      sudo apt-get upgrade -y
+      
   - name: Install Nginx in web Agent Node
     apt: pkg=nginx state=present
     become_user: root
 
   - name: Setting reverse proxy
     shell: |
+      git clone https://github.com/Delwar35/awsFileTransfer
       sudo rm -rf /etc/nginx/sites-available/default
       cp ./awsFileTransfer/default /etc/nginx/sites-available/default
     become_user: root
