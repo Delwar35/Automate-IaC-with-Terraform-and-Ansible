@@ -22,7 +22,7 @@
 
   - name: env variable
     shell: |
-      echo 'export DB_HOST="mongodb://192.168.33.11:27017/posts"' >> .bashrc
+      echo 'export DB_HOST="mongodb://34.255.0.65:27017/posts"' >> .bashrc
     become_user: root
 
 
