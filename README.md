@@ -575,6 +575,14 @@ The Job to run the playbook is the same as the job to run the playbook for the d
     }
 } 
  ```
+### Step 6: Run app
+- ssh into app ec2 instance
+- `cd awsFileTransfer/app`
+- `npm start `
+
+![image](https://user-images.githubusercontent.com/94615905/149549701-9ba550ce-3edf-4fad-ba73-2ebfc262ce10.png)
+ 
+ 
 
  
  
