@@ -548,6 +548,8 @@ pipeline {
  ```
 ### Step 5: Create job to run app playbooks 
  
+The Job to run the playbook is the same as the job to run the playbook for the db ec2 instance but with a different script.
+ 
  - Script for job
  
  ```
