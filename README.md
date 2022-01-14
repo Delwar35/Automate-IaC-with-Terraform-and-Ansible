@@ -471,7 +471,81 @@ pipeline {
 > ubuntu is the eng99.pem file with user set to ubuntu
  
 
-### Step 4: Create playbook for App
+### Step 4: Create playbooks for App ec2 instance
+- Nginx playbook
+
+ ```
+ # This file is to configure and install nginx in web agent
+---
+# which host do we need to install nginx in
+- hosts: app
+  gather_facts: true
+
+# what facts do we want to see while installing
+
+# do we need admin access? yes
+  become: true
+
+# what task do we want to perform in this yml file
+  tasks:
+  - name: Install Nginx in web Agent Node
+    apt: pkg=nginx state=present
+    become_user: root
+
+  - name: Setting reverse proxy
+    shell: |
+      sudo rm -rf /etc/nginx/sites-available/default
+      cp ./awsFileTransfer/default /etc/nginx/sites-available/default
+    become_user: root
+
+  - name: Restart Ngnix
+    shell: |
+      sudo systemctl restart nginx
+    become_user: root
+ 
+ ```
+ 
+- Nodejs playbook
+ 
+ ```
+ # which host do we need to install nginx in
+- hosts: app
+  gather_facts: true
+
+# what facts do we want to see while installing
+
+# do we need admin access? yes
+  become: true
+
+# what task do we want to perform in this yml file
+  tasks:
+
+  - name: Install Nodejs in web Agent Node
+    shell: |
+      curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && sudo apt-get install nodejs -y
+
+  - name: Install npm and pm2
+    shell: |
+      sudo apt install npm -y
+      sudo npm install pm2 -g
+
+  - name: env variable
+    shell: |
+      echo 'export DB_HOST="mongodb://192.168.33.11:27017/posts"' >> .bashrc
+    become_user: root
+
+
+  - name: Seed and run app
+    shell: |
+      cd awsFileTransfer/
+      cd app/
+      npm install
+      node seeds/seed.js
+      #pm2 kill
+      #pm2 start app.js
+
+    become_user: root
+ ```
 ### Step 5: Create job to run app playbooks 
 
  
