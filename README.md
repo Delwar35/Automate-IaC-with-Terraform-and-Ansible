@@ -376,7 +376,7 @@ pipeline {
   - install Jenkins command
  ```
  sudo apt-get update -y
- sudo apt-get udgrade -y
+ sudo apt-get upgrade -y
  sudo apt-get install software-properties-common 
  
  sudo apt-add-repository ppa:ansible/ansible
